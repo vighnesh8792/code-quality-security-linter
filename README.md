@@ -1,5 +1,4 @@
-#Code Quality & Security Linker
-
+# Advanced Code Quality & Security Linter
 -A robust, custom-built static code analyzer in Java that scans source code files to detect security vulnerabilities, poor 
 coding practices, performance bottlenecks, and style violations
 
@@ -23,9 +22,9 @@ coding practices, performance bottlenecks, and style violations
 
 ```bash
 
-javac AdvancedLinter.java
+-javac AdvancedLinter.java
 
-java AdvancedLinter Test.java 
+-java AdvancedLinter Test.java 
 
 
 ## Sample Input
