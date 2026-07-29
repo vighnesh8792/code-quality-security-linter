@@ -1,31 +1,72 @@
-# code-quality-security-linter
-🛡️ Code Quality & Security Linter (Java)
-A robust, custom-built static code analyzer in Java that scans source code files to detect security vulnerabilities, poor coding practices, performance bottlenecks, and style violations.
+#Code Quality & Security Linker
 
-✨ Features
-Security Checks: Detects hardcoded passwords, exposed API keys, SQL injection risks, and weak hashing algorithms (e.g., MD5/SHA-1).
+-A robust, custom-built static code analyzer in Java that scans source code files to detect security vulnerabilities, poor 
+coding practices, performance bottlenecks, and style violations
 
-Code Quality & Style: Identifies empty catch blocks, generic exceptions, leftover System.out.println statements, and wildcard imports.
 
-Performance Analysis: Flags multiple nested loops and excessive string concatenations.
+## Features
 
-Detailed Reporting: Generates a categorized, line-by-line issue report with specific suggestions for fixes (Categorized by CRITICAL, ERROR, WARNING, INFO).
+- Hardcoded password detection
 
-🛠️ Technologies Used
-Java (Core): File I/O Streams, Collections Framework, Enums
+- SQL injection pattern detection
 
-Regular Expressions (Regex): Advanced pattern matching for syntax and security flaw detection
+- Empty catch block detection
 
-🚀 How to Run
-Compile the linter:
+- System.out.println detection
 
-Bash
+## Technologies
+-java
+-Regex
+-File Handling
 
+## How to Run
+
+```bash
 
 javac AdvancedLinter.java
-Run the scan on a target file (or directory):
 
-Bash
+java AdvancedLinter Test.java 
 
 
-java AdvancedLinter Test.java
+## Sample Input
+String password = "admin123";
+
+String query = "SELECT * FROM users WHERE name = '" + userName + "'";
+
+System.out.println("debug");
+
+catch(Exception e) {}
+
+
+
+## Sample Output
+======================================================
+ Advanced Code Quality & Security Linter
+ Target: Test.java
+======================================================
+
+--- Scan Results ---
+Files scanned: 1
+Issues found: 5
+
+[CRITICAL] [SECURITY] [SEC001] Test.java:1 -> Hardcoded password detected.
+    Code: String password = "admin123";
+    Fix : Move secrets to environment variables or a secure vault.
+------------------------------------------------------
+[ERROR] [SECURITY] [SEC003] Test.java:2 -> Possible SQL Injection risk due to string concatenation.
+    Code: String query = "SELECT * FROM users WHERE name = '" + userName + "'";
+    Fix : Use PreparedStatement with parameter binding.
+------------------------------------------------------
+[INFO] [QUALITY] [QUA002] Test.java:3 -> System.out.println used.
+    Code: System.out.println("debug");
+    Fix : Use a logging framework for production code.
+------------------------------------------------------
+[WARNING] [QUALITY] [QUA001] Test.java:4 -> Empty catch block found.
+    Code: catch(Exception e) {}
+    Fix : Log the exception or handle it properly.
+------------------------------------------------------
+[WARNING] [QUALITY] [QUA009] Test.java:4 -> Generic catch(Exception) detected.
+    Code: catch(Exception e) {}
+    Fix : Catch specific exception types wherever possible.
+------------------------------------------------------
+
