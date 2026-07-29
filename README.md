@@ -24,17 +24,16 @@ coding practices, performance bottlenecks, and style violations
 
 -javac AdvancedLinter.java
 
--java AdvancedLinter Test.java 
+-java AdvancedLinter Test.java
 
-
-## Sample Input
-String password = "admin123";
+## Sample input
+'''String password = "admin123";
 
 String query = "SELECT * FROM users WHERE name = '" + userName + "'";
 
 System.out.println("debug");
 
-catch(Exception e) {}
+catch(Exception e) {}'''
 
 
 
@@ -44,7 +43,7 @@ catch(Exception e) {}
  Target: Test.java
 ======================================================
 
---- Scan Results ---
+'''--- Scan Results ---
 Files scanned: 1
 Issues found: 5
 
@@ -67,5 +66,5 @@ Issues found: 5
 [WARNING] [QUALITY] [QUA009] Test.java:4 -> Generic catch(Exception) detected.
     Code: catch(Exception e) {}
     Fix : Catch specific exception types wherever possible.
-------------------------------------------------------
+------------------------------------------------------'''
 
